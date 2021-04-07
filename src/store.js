@@ -6,6 +6,7 @@ import {
 	ayahNumberChangeReducer,
 	ayahSelectionReducer,
 	nextAyahFetchReducer,
+	qualitySelectionReducer,
 	sheikhChangeReducer,
 } from "./redux/reducers";
 
@@ -15,11 +16,13 @@ const reducer = combineReducers({
 	Sheikh: sheikhChangeReducer,
 	NextAyah: nextAyahFetchReducer,
 	AyahSelection: ayahSelectionReducer,
+	Quality: qualitySelectionReducer,
 });
 
 const initialState = {
 	Sheikh: { sheikh: "ar.abdurrahmaansudais" },
 	AyahNumber: { ayahNumber: 1 },
+	Quality: { quality: "" },
 };
 
 const middleware = [thunk];

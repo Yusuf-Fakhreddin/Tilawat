@@ -1,0 +1,77 @@
+.library {
+	color: #14143c;
+	position: fixed;
+	box-shadow: 2px 2px 50px rgb(221, 221, 221);
+	top: 0;
+	left: 0;
+	width: 20rem;
+	height: 100%;
+	overflow: scroll;
+	background: #d3e0ea;
+	overflow-x: hidden; /* Hide horizontal scrollbar */
+
+	// transform: translateX(-100%);
+	// transition: all 0.5s ease;
+	// opacity: 0;
+}
+
+.library-element {
+	.name {
+		display: flex;
+		justify-content: space-between;
+	}
+	text-align: right;
+	margin-top: 10px;
+	cursor: pointer;
+	padding: 15px;
+	&:hover {
+		background: #f6f5f5;
+		border-radius: 5px;
+	}
+}
+.active {
+	background: #f6f5f5;
+}
+
+/* The emerging W3C standard
+   that is currently Firefox-only */
+* {
+	scrollbar-width: thin;
+	scrollbar-color: #14143c transparent;
+}
+
+/* Works on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+	width: 6px;
+}
+
+*::-webkit-scrollbar-track {
+	background: transparent;
+}
+::-webkit-scrollbar-corner {
+	background: transparent;
+}
+*::-webkit-scrollbar-thumb {
+	background-color: #f6f5f5;
+	border-radius: 20px;
+	border: transparent;
+}
+*::-webkit-scrollbar-thumb:hover {
+	background-color: #14143c;
+	border-radius: 20px;
+	border: transparent;
+}
+
+.selected {
+	background: rgb(194, 208, 253);
+}
+.active-library {
+	transform: translateX(0%);
+	opacity: 1;
+}
+
+@media screen and (max-width: 768px) {
+	.library {
+		width: 70%;
+	}
+}

@@ -1,16 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Button, ButtonGroup } from "@material-ui/core";
-import PlayArrowIcon from "@material-ui/icons/PlayArrow";
-import SkipPreviousIcon from "@material-ui/icons/SkipPrevious";
-import SkipNextIcon from "@material-ui/icons/SkipNext";
-import PauseIcon from "@material-ui/icons/Pause";
-import {
-	ayahSelect,
-	changeAyahNumber,
-	getAyah,
-	getNextAyah,
-} from "../redux/actions";
+
+import { ayahSelect, getAyah } from "../redux/actions";
 
 const Player = () => {
 	const audioRef = useRef(null);
@@ -18,10 +9,10 @@ const Player = () => {
 
 	const dispatch = useDispatch();
 	const data = useSelector((state) => state.AyahSelection);
-	const Number = useSelector((state) => state.AyahNumber);
-	const sheikhName = useSelector((state) => state.Sheikh);
-	const { sheikh } = sheikhName;
-	const { ayahNumber } = Number;
+	// const Number = useSelector((state) => state.AyahNumber);
+	// const sheikhName = useSelector((state) => state.Sheikh);
+	// const { sheikh } = sheikhName;
+	// const { ayahNumber } = Number;
 	const { loading, error, ayah } = data;
 
 	useEffect(() => {
@@ -33,10 +24,9 @@ const Player = () => {
 		if (playing) audioRef.current.play();
 	}, [ayah]);
 
-	const onPlayy = () => {
-		dispatch(getNextAyah(ayahNumber + 1, sheikh));
-		dispatch(changeAyahNumber(ayahNumber + 1));
-	};
+	// const onPlayy = () => {
+	// 	dispatch(changeAyahNumber(ayahNumber + 1));
+	// };
 	const onEndd = () => {
 		dispatch(ayahSelect(false));
 	};
@@ -51,46 +41,52 @@ const Player = () => {
 	};
 
 	return (
-		<div>
+		<>
 			{loading ? (
 				<div className="loader"></div>
 			) : (
-				<div>
+				<>
 					{" "}
 					{ayah && (
 						<audio
 							ref={audioRef}
 							src={ayah.audio}
-							onPlay={onPlayy}
+							// onPlay={onPlayy}
 							onEnded={onEndd}
 						></audio>
 					)}
-					<ButtonGroup
-						size="large"
-						color="primary"
-						aria-label="large outlined primary button group"
-					>
-						<Button>
-							{" "}
-							<SkipPreviousIcon />{" "}
-						</Button>
-						{!playing ? (
-							<Button onClick={playHandler}>
-								<PlayArrowIcon />{" "}
-							</Button>
-						) : (
-							<Button onClick={playHandler}>
-								<PauseIcon />{" "}
-							</Button>
-						)}
-						<Button>
-							{" "}
-							<SkipNextIcon />{" "}
-						</Button>
-					</ButtonGroup>
-				</div>
+					<div className="player">
+						<div className="play-control">
+							<i
+								className="fas fa-angle-left"
+								// onClick={() => nextAyahHandler("left")}
+							></i>
+							{playing ? (
+								<i className="fas fa-pause" onClick={playHandler}></i>
+							) : (
+								<i className="fas fa-play" onClick={playHandler}></i>
+							)}
+
+							<i
+								className="fas fa-angle-right"
+								// onClick={() => nextAyahHandler("right")}
+							></i>
+							{/* <i onClick={() => setActiveVolume(!activeVolume)} icon={faVolumeDown} />
+				{activeVolume && (
+					<input
+						onChange={changeVolume}
+						value={songInfo.volume}
+						max="1"
+						min="0"
+						step="0.01"
+						type="range"
+					/>
+				)} */}
+						</div>
+					</div>
+				</>
 			)}
-		</div>
+		</>
 	);
 };
 

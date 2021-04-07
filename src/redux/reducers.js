@@ -7,6 +7,7 @@ import {
 	NEXT_AYAH_FETCH_FAIL,
 	NEXT_AYAH_FETCH_REQUEST,
 	NEXT_AYAH_FETCH_SUCCESS,
+	QUALITY_CHANGE,
 	SHEIKH_CHANGE,
 } from "./constants";
 
@@ -77,6 +78,15 @@ export const ayahSelectionReducer = (state = {}, action) => {
 	switch (action.type) {
 		case AYAH_SELECTION:
 			return { ayah: action.payload.ayah, loading: false };
+
+		default:
+			return state;
+	}
+};
+export const qualitySelectionReducer = (state = {}, action) => {
+	switch (action.type) {
+		case QUALITY_CHANGE:
+			return { quality: action.payload };
 
 		default:
 			return state;

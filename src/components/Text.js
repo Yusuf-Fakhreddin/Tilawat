@@ -6,11 +6,11 @@ const Text = () => {
 	const { ayah, loading } = data;
 
 	return (
-		<div>
+		<div className="surah">
 			{loading ? null : (
 				<div>
 					<h1>{ayah && ayah.surah.name}</h1>
-					<h2>{ayah && ayah.text}</h2>
+					<h2 className="ayah">{ayah && ayah.text}</h2>
 				</div>
 			)}
 		</div>
