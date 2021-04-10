@@ -65,6 +65,57 @@
 	}
 }
 
+.volume-control {
+	width: 40%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 15px;
+	.fa-volume-down,
+	.fa-volume-up {
+		cursor: pointer;
+	}
+}
+.slider {
+	margin: 0 15px;
+	-webkit-appearance: none;
+	width: 100%;
+	height: 25px;
+	background: #d3e0ea;
+	outline: none;
+	opacity: 0.7;
+	-webkit-transition: 0.2s;
+	transition: opacity 0.2s;
+	border-radius: 5px;
+}
+.slider:hover {
+	opacity: 1;
+}
+.slider::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	appearance: none;
+	width: 25px;
+	height: 30px;
+	background: #14143c;
+	cursor: pointer;
+	border-radius: 50%;
+}
+
+.slider::-moz-range-thumb {
+	width: 25px;
+	height: 30px;
+	background: #14143c;
+	cursor: pointer;
+}
+input[type="range"]:focus {
+	outline: none;
+}
+input[type="range"]::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	height: 16px;
+	width: 16px;
+}
+
 @import "./ayah";
 @import "./player";
 @import "./modal";

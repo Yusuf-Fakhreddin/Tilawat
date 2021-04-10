@@ -1,36 +1,44 @@
 import React, { useRef, useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { ayahSelect, getAyah } from "../redux/actions";
+import {
+	ayahSelect,
+	getAyah,
+	SelectNextAyah,
+	selectPrevAyah,
+} from "../redux/actions";
 
 const Player = () => {
+	const [volume, setVolume] = useState(0.5);
+
 	const audioRef = useRef(null);
 	const [playing, setPlaying] = useState(false);
 
 	const dispatch = useDispatch();
 	const data = useSelector((state) => state.AyahSelection);
-	// const Number = useSelector((state) => state.AyahNumber);
-	// const sheikhName = useSelector((state) => state.Sheikh);
-	// const { sheikh } = sheikhName;
-	// const { ayahNumber } = Number;
+	const Quality = useSelector((state) => state.Quality);
+	const { quality } = Quality;
 	const { loading, error, ayah } = data;
 
 	useEffect(() => {
 		dispatch(getAyah());
 		console.log(ayah);
-	}, []);
+	}, [quality]);
 
 	useEffect(() => {
 		if (playing) audioRef.current.play();
-	}, [ayah]);
+		if (ayah) audioRef.current.volume = volume;
+	}, [ayah, volume]);
 
-	// const onPlayy = () => {
-	// 	dispatch(changeAyahNumber(ayahNumber + 1));
-	// };
+	const repeat = () => {
+		audioRef.current.currentTime = 0;
+		audioRef.current.play();
+	};
 	const onEndd = () => {
 		dispatch(ayahSelect(false));
 	};
 	const playHandler = () => {
+		console.log(audioRef);
 		if (playing) {
 			audioRef.current.pause();
 			setPlaying(!playing);
@@ -38,6 +46,13 @@ const Player = () => {
 			audioRef.current.play();
 			setPlaying(!playing);
 		}
+	};
+
+	const increaseVolume = () => {
+		if (volume + 0.1 <= 1) setVolume(volume + 0.1);
+	};
+	const decreaseVolume = () => {
+		if (volume - 0.1 >= 0) setVolume(volume - 0.1);
 	};
 
 	return (
@@ -50,8 +65,7 @@ const Player = () => {
 					{ayah && (
 						<audio
 							ref={audioRef}
-							src={ayah.audio}
-							// onPlay={onPlayy}
+							src={ayah.audio + quality}
 							onEnded={onEndd}
 						></audio>
 					)}
@@ -59,8 +73,9 @@ const Player = () => {
 						<div className="play-control">
 							<i
 								className="fas fa-angle-left"
-								// onClick={() => nextAyahHandler("left")}
+								onClick={() => dispatch(selectPrevAyah())}
 							></i>
+							<i className="fas fa-redo" onClick={() => repeat()}></i>
 							{playing ? (
 								<i className="fas fa-pause" onClick={playHandler}></i>
 							) : (
@@ -69,19 +84,29 @@ const Player = () => {
 
 							<i
 								className="fas fa-angle-right"
-								// onClick={() => nextAyahHandler("right")}
+								onClick={() => dispatch(SelectNextAyah())}
 							></i>
-							{/* <i onClick={() => setActiveVolume(!activeVolume)} icon={faVolumeDown} />
-				{activeVolume && (
-					<input
-						onChange={changeVolume}
-						value={songInfo.volume}
-						max="1"
-						min="0"
-						step="0.01"
-						type="range"
-					/>
-				)} */}
+						</div>
+						<div className="volume-control">
+							<i
+								className="fas fa-volume-down"
+								onClick={() => decreaseVolume()}
+							></i>
+							<input
+								onChange={(event) => {
+									setVolume(event.target.valueAsNumber);
+								}}
+								className="slider"
+								value={volume}
+								max="1"
+								min="0"
+								step="0.01"
+								type="range"
+							/>
+							<i
+								className="fas fa-volume-up"
+								onClick={() => increaseVolume()}
+							></i>
 						</div>
 					</div>
 				</>

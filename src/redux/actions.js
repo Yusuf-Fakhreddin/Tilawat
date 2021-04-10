@@ -70,9 +70,13 @@ export const getNextAyah = (ayahNumber, sheikh) => async (
 };
 
 export const changeAyahNumber = (ayahNumber) => async (dispatch, getState) => {
+	console.log(ayahNumber, typeof ayahNumber);
 	let NewAyahNumber;
-	if (Number(ayahNumber) < 6236) NewAyahNumber = Number(ayahNumber);
-	else if (Number(ayahNumber <= 0)) NewAyahNumber = 6236;
+	if (ayahNumber === 0) {
+		NewAyahNumber = 6236;
+	} else if (ayahNumber === -1) {
+		NewAyahNumber = 6235;
+	} else if (Number(ayahNumber) < 6236) NewAyahNumber = Number(ayahNumber);
 	else {
 		NewAyahNumber = 1;
 	}
@@ -107,12 +111,13 @@ export const ayahSelect = (First, newAyah) => async (dispatch, getState) => {
 		payload: ayah,
 	});
 };
-export const changeSheikh = (sheikh) => async (dispatch, getState) => {
+export const changeSheikh = (sheikh, name) => async (dispatch, getState) => {
 	const { AyahNumber: ayahNumber } = getState();
 	dispatch(changeAyahNumber(ayahNumber.ayahNumber - 1));
 	dispatch({
 		type: SHEIKH_CHANGE,
 		payload: sheikh,
+		name,
 	});
 	dispatch(getAyah());
 };
@@ -125,5 +130,15 @@ export const changeQuality = (quality) => async (dispatch, getState) => {
 		type: QUALITY_CHANGE,
 		payload: quality,
 	});
+	dispatch(getAyah());
+};
+
+export const selectPrevAyah = () => async (dispatch, getState) => {
+	const { AyahNumber: ayahNumber } = getState();
+	dispatch(changeAyahNumber(ayahNumber.ayahNumber - 2));
+	dispatch(getAyah());
+};
+
+export const SelectNextAyah = () => async (dispatch, getState) => {
 	dispatch(getAyah());
 };

@@ -67,7 +67,7 @@ export const ayahNumberChangeReducer = (state = {}, action) => {
 export const sheikhChangeReducer = (state = {}, action) => {
 	switch (action.type) {
 		case SHEIKH_CHANGE:
-			return { sheikh: action.payload };
+			return { sheikh: action.payload, name: action.name };
 
 		default:
 			return state;

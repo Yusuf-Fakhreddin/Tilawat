@@ -3,13 +3,13 @@ import { useDispatch } from "react-redux";
 
 import { changeSheikh } from "../redux/actions";
 
-const LibrarySurah = ({ key, name, englishName, identifier }) => {
+const LibrarySheikhs = ({ key, name, englishName, identifier }) => {
 	const dispatch = useDispatch();
 
 	return (
 		<div
 			className="library-element"
-			onClick={() => dispatch(changeSheikh(identifier))}
+			onClick={() => dispatch(changeSheikh(identifier, name))}
 		>
 			<h1>{name}</h1>
 			<h2>{englishName}</h2>
@@ -17,4 +17,4 @@ const LibrarySurah = ({ key, name, englishName, identifier }) => {
 	);
 };
 
-export default LibrarySurah;
+export default LibrarySheikhs;

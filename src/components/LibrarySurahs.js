@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 
 import { getAyah } from "../redux/actions";
 
-const LibrarySurah = ({ arabicName, EnglishName, number, start }) => {
+const LibrarySurahs = ({ arabicName, EnglishName, number, start }) => {
 	const dispatch = useDispatch();
 
 	return (
@@ -17,4 +17,4 @@ const LibrarySurah = ({ arabicName, EnglishName, number, start }) => {
 	);
 };
 
-export default LibrarySurah;
+export default LibrarySurahs;

@@ -20,7 +20,7 @@ const reducer = combineReducers({
 });
 
 const initialState = {
-	Sheikh: { sheikh: "ar.abdurrahmaansudais" },
+	Sheikh: { sheikh: "ar.abdulsamad", name: "عبدالباسط عبدالصمد" },
 	AyahNumber: { ayahNumber: 1 },
 	Quality: { quality: "" },
 };
