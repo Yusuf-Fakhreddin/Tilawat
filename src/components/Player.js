@@ -17,7 +17,9 @@ const Player = () => {
 	const dispatch = useDispatch();
 	const data = useSelector((state) => state.AyahSelection);
 	const Quality = useSelector((state) => state.Quality);
+	const Sheikh = useSelector((state) => state.Sheikh);
 	const { quality } = Quality;
+	const { sheikh } = Sheikh;
 	const { loading, error, ayah } = data;
 
 	useEffect(() => {
@@ -65,7 +67,7 @@ const Player = () => {
 					{ayah && (
 						<audio
 							ref={audioRef}
-							src={ayah.audio + quality}
+							src={`http://cdn.alquran.cloud/media/audio/ayah/${sheikh}/${ayah.number}${quality}`}
 							onEnded={onEndd}
 						></audio>
 					)}
