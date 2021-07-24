@@ -4,7 +4,7 @@
 
 # Tilawat: React Qur'an sound player
 
-## [Demo](https://user-images.githubusercontent.com/48655310/126858447-17072e3e-7e90-4356-9a8f-aa3f80a914a1.mp4 "Tilawat")
+![Demo](https://user-images.githubusercontent.com/48655310/126858447-17072e3e-7e90-4356-9a8f-aa3f80a914a1.mp4 "Tilawat")
 
 Qur'an Sound Player with buffering the next ayah feature utilizing redux with external API
 You can easily change the playing surah, the sheikh or the audio quality between low and high
