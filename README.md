@@ -5,11 +5,10 @@
 Qur'an Sound Player with buffering the next ayah feature utilizing redux with external API
 You can easily change the playing surah, the sheikh or the audio quality between low and high
 
-![Tilawat](https://drive.google.com/file/d/1aFRNnABEj3-U_L5UsqNQHmt-cp5kLljz "Tilawat")
+![Tilawat](https://user-images.githubusercontent.com/48655310/126858425-25b0eb29-8651-48ec-bb6e-0468024a7146.png)
+![TilawatSheikhs](https://user-images.githubusercontent.com/48655310/126858429-8dd42daf-2dbe-4b10-a1b1-24c8221ed7ae.png)
+![TilawatSurahs](https://user-images.githubusercontent.com/48655310/126858432-1c080685-a2d1-4465-819d-52542f1f164e.png)
 
-![Tilawat](https://drive.google.com/file/d/1d4Amj87YYrUQroXG2Oc0wQRT27c0gpcz "Tilawat Sheikhs")
-
-![Tilawat](https://drive.google.com/file/d/1pkEtcagQ2xxPjuiDslmm0oXMcHxLqycf "Tilawat Surahs")
 
 ## Usage
 
