@@ -53,7 +53,17 @@
 	border-radius: 50%;
 	width: 120px;
 	height: 120px;
+	-webkit-animation: spin 2s linear infinite;
 	animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
 }
 
 @keyframes spin {
@@ -84,7 +94,6 @@
 	background: #d3e0ea;
 	outline: none;
 	opacity: 0.7;
-	-webkit-transition: 0.2s;
 	transition: opacity 0.2s;
 	border-radius: 5px;
 }
